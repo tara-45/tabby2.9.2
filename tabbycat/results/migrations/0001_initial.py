@@ -104,7 +104,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterIndexTogether(
             name='speakerscorebyadj',
-            index_together=set([('ballot_submission', 'debate_adjudicator')]),
+            indexes=[models.Index(fields=[('ballot_submission', 'debate_adjudicator')])],
         ),
         migrations.AlterUniqueTogether(
             name='speakerscore',

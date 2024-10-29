@@ -141,7 +141,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterIndexTogether(
             name='team',
-            index_together=set([('tournament', 'institution', 'short_reference')]),
+            indexes=[models.Index(fields=[('tournament', 'institution', 'short_reference')])],
         ),
         migrations.AlterUniqueTogether(
             name='speakercategory',
@@ -149,7 +149,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterIndexTogether(
             name='speakercategory',
-            index_together=set([('tournament', 'seq')]),
+            indexes=[models.Index(fields=[('tournament', 'seq')])],
         ),
         migrations.AddField(
             model_name='speaker',

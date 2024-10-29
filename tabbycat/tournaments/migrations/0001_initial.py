@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.CreateModel(
             name='Round',
+            index_together=set(),
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('seq', models.IntegerField(help_text='A number that determines the order of the round, should count consecutively from 1 for the first round', verbose_name='sequence number')),
@@ -37,6 +38,10 @@ class Migration(migrations.Migration):
                 'ordering': ['tournament', 'seq'],
                 'verbose_name_plural': 'rounds',
             },
+        ),
+        migrations.AddIndex(
+            model_name='round',
+            index=models.Index(fields=['tournament', 'seq']),
         ),
         migrations.CreateModel(
             name='Tournament',
@@ -67,6 +72,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterIndexTogether(
             name='round',
-            index_together=set([('tournament', 'seq')]),
+            indexes=[models.Index(fields=[('tournament', 'seq')])],
         ),
     ]
