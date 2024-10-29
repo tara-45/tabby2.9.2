@@ -42,6 +42,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterIndexTogether(
             name='breakcategory',
-            index_together=set([('tournament', 'seq')]),
+            indexes=[models.Index(fields=[('tournament', 'seq')])],
         ),
     ]

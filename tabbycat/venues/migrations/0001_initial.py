@@ -61,6 +61,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterIndexTogether(
             name='venue',
-            index_together=set([('name',)]),
+            indexes=[models.Index(fields=[('name',)])],
         ),
     ]
