@@ -29,7 +29,8 @@ RUN pip install pipenv
 RUN pipenv install --system --deploy
 RUN npm ci --only=production
 
+
 # Compile all the static files
-RUN npm run build
 RUN npx browserslist@latest --update-db
+RUN npm run build
 RUN python ./tabbycat/manage.py collectstatic --noinput -v 0
